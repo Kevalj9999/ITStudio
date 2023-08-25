@@ -1,10 +1,8 @@
-require('dotenv').config("./.env");
+//require('dotenv').config("./.env");
 const express = require("express");
 const bodyPraser = require("body-parser");
 const request = require("request");
-const session = require('express-session');
 const passport = require('passport');
-const passportLocalMongoose = require('passport-local-mongoose');
 const https = require("https");
 const app = express();
 
@@ -14,13 +12,12 @@ const { METHODS } = require("http");
 app.use(express.static(__dirname));
 app.use(bodyPraser.urlencoded({ extended: true }));
 
-/*app.use(session({
-    secret: "We are the beasts of the wizarding world.",
-    resave: false,
-    saveUninitialized: false
-}))
+mongoose.connect('mongodb://localhost:27017/ITStudio',{ useNewUrlParser: true});
 
-app.use(passport.initialize());
-app.use(passport.session());*/
+app.get("/",function(req,res){
+    res.sendFile("C:/Users/gujar/Desktop/ITStudio/landing_index.html");
+});
 
-mongoose.connect('mongodb://localhost:27017/usersdb',{ useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true});
+app.listen(3000, function () {
+    console.log("Server is running on port 3000")
+});

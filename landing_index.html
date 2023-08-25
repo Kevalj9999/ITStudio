@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Donation Website</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Rubik&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="\landing_index.css">
+  <script src="/landing_index.js"></script>
+</head>
+<body>
+<div class="jumbotron">
+  <h1>Welcome to our Blood Donation Website</h1>
+  <p>Your donation can save lives. Join us in making a difference.</p>
+  <a href="#features" class="btn btn-primary btn-lg">Learn More</a>
+</div>
+
+<div id="features" class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="text-center">
+          <span class="feature-icon">&#10084;</span>
+          <h3 class="feature-heading">Donate Blood</h3>
+          <p class="feature-description">Your blood donation can help patients in need and contribute to medical treatments.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="text-center">
+          <span class="feature-icon">&#128170;</span>
+          <h3 class="feature-heading">Find Donors</h3>
+          <p class="feature-description">Easily find blood donors in your area and connect with them to arrange donations.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="text-center">
+          <span class="feature-icon">&#127974;</span>
+          <h3 class="feature-heading">Save Lives</h3>
+          <p class="feature-description">By donating blood, you can help save lives and make a positive impact on your community.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+<div class="popup" id="popup">
+    <form>
+        <h1 style="text-align: center; padding-bottom: 2.5%;">New User</h1>
+        <div class="form-group padding_b">
+          <label for="name" class="heading_text">Name</label>
+          <input type="text" class="form-control input" id="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group padding_b ">
+          <label for="pnumber" class="heading_text">Phone Number</label>
+          <input type="number" class="form-control input" id="pnumber" placeholder="Enter your phone number" required>
+        </div>
+        <div class="form-group padding_b">
+            <label for="emailid" class="heading_text">Email address</label>
+            <input type="email" class="form-control input" id="emailid" placeholder="Enter your email">
+          </div>
+          <div class="form-group padding_b">
+            <label for="hobbies" class="heading_text">Hobbies</label>
+            <input type="text" class="form-control input" id="hobbies" placeholder="Tell us about your hobbies">
+          </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" onclick="closePopup()">Close</button>
+      </form>
+  </div>
+</div>
+ 
+<div class="text-center btn_add_details">
+    <a href="#" class="btn btn-danger btn-lg" onclick="openPopup()">Add Details</a>
+</div>
+
+<div class="footer">
+  <p>&copy; 2023 Blood Donation Website. All rights reserved.</p>
+</div>
+
+</body>
+</html>
