@@ -3,6 +3,8 @@ const bodyPraser = require("body-parser");
 const mailer = require('nodemailer');
 const https = require("https");
 const app = express();
+var cors = require('cors');
+app.use(cors);
 
 app.set("view engine", "ejs");
 const mongoose = require("mongoose");
