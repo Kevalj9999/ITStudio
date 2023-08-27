@@ -3,16 +3,13 @@ const bodyPraser = require("body-parser");
 const mailer = require('nodemailer');
 const https = require("https");
 const app = express();
-var cors = require('cors');
-require("dotenv").config;
-
+const cors = require('cors');
 
 app.set("view engine", "ejs");
 const mongoose = require("mongoose");
-const { METHODS } = require("http");
-app.use(express.static(__dirname));
-app.use(express.json());
-app.use(cors);
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+app.use(cors());
 // app.use(function(req, res, next) {
 //     // res.header("Access-Control-Allow-Origin", "*");
 //     const allowedOrigins = ['http://localhost:3000'];
@@ -26,7 +23,8 @@ app.use(cors);
 //     next();
 //   });
 
-mongoose.connect('mongodb+srv://Keval_Juthani:Maxpayne99@cluster0.bae2k89.mongodb.net/?retryWrites=true&w=majority/ITStudio',{ useNewUrlParser: true});
+const status = mongoose.connect('mongodb+srv://kevalj:kevalj@cluster0.eui19q0.mongodb.net/ITStudioDB',{ useNewUrlParser: true});
+console.log(status);
 
 
 const donorSchema = new mongoose.Schema({
@@ -39,8 +37,9 @@ const donorSchema = new mongoose.Schema({
 const Donor = mongoose.model("Donor", donorSchema);
 
 app.get("/",async function(req,res){
+    // res.send("Hello");
     const donor_data=await Donor.find();
-    res.json(donor_data);
+    res.send(donor_data);
 });
 
 let name,email,number,hobbies;
@@ -74,13 +73,14 @@ app.post("/submit",async function(req,res){
         var doc = await Donor.findOneAndUpdate({ email: emailid }, { Name: req.body.formData.name , phone_number:req.body.formData.number , email:req.body.formData.email, hobbies:req.body.formData.hobbies});
         console.log(doc);
     }
-    console.log(req.body.formData.name);
 });
 
 app.post("/email",function(req,res){
     console.log(req.body);
 });  
 
-app.listen(5000 || process.env.PORT, function () {
-    console.log("Server is running on port 5000")
+const PORT = 5000 || process.env.PORT;
+
+app.listen(PORT, function () {
+    console.log(`Server is running on port ${PORT}`)
 });
