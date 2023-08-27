@@ -4,7 +4,7 @@ const mailer = require('nodemailer');
 const https = require("https");
 const app = express();
 var cors = require('cors');
-
+require("dotenv").config;
 
 
 app.set("view engine", "ejs");
@@ -26,7 +26,7 @@ app.use(cors);
 //     next();
 //   });
 
-mongoose.connect('mongodb://127.0.0.1:27017/ITStudio',{ useNewUrlParser: true});
+mongoose.connect('mongodb+srv://Keval_Juthani:Maxpayne99@cluster0.bae2k89.mongodb.net/?retryWrites=true&w=majority/ITStudio',{ useNewUrlParser: true});
 
 
 const donorSchema = new mongoose.Schema({
