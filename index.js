@@ -87,42 +87,7 @@ app.post("/submit",async function(req,res){
 });
 
 app.post("/email", async function(req,res){
-    console.log("Entered block");
-    let transporter = await nodemailer.createTransport({
-        service: 'gmail',
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: true, // true for 465, false for other ports
-        auth: {
-            user: 'keval.j@ahduni.edu.in',
-            pass: kevalj9999, // generated ethereal password
-        },
-        headers: {
-            "x-priority": "1",
-            "x-msmail-priority": "High",
-            importance: "high"
-        }
-    });
-
     console.log(req.body);
-    var mailOptions = {
-        from: 'Keval Juthani <keval.j@ahduni.edu.in>',
-        to: 'kevaljuthani99@gmail.com',
-        subject: 'Details of Users',
-        // html: ejs.renderFile(__dirname + '/index.ejs', { data: data })
-        html: req.body
-        //     ejs: ' '
-    };
-    // 'info@redpositive.in'
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        }
-        else {
-            console.log("Email Sent");
-            // res.redirect("/refresh");
-        }
-    })
 });  
 
 app.listen(5000 || process.env.PORT, function () {
