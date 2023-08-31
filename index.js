@@ -92,7 +92,7 @@ app.post("/email", async function(req,res){
         port: 587,
         secure: true, // true for 465, false for other ports
         auth: {
-            user: 'kevaljuthani99@gmail.com',
+            user: 'keval.j@ahduni.edu.in',
             pass: kevalj9999, // generated ethereal password
         },
         headers: {
@@ -104,8 +104,8 @@ app.post("/email", async function(req,res){
 
     console.log(req.body);
     var mailOptions = {
-        from: 'Keval Juthani <kevaljuthani99@gmail.com>',
-        to: 'keval.j@ahduni.edu.in',
+        from: 'Keval Juthani <keval.j@ahduni.edu.in>',
+        to: 'kevaljuthani99@gmail.com',
         subject: 'Details of Users',
         // html: ejs.renderFile(__dirname + '/index.ejs', { data: data })
         html: req.body
