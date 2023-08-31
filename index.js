@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyPraser = require("body-parser");
 const nodemailer = require('nodemailer');
-const https = require("https");
 const app = express();
 var cors = require('cors');
 require("dotenv").config;
@@ -11,7 +10,7 @@ app.set("view engine", "ejs");
 const mongoose = require("mongoose");
 const { METHODS } = require("http");
 app.use(express.static(__dirname));
-app.use(express.json());
+app.use(bodyPraser.json());
 app.use(cors);
 // app.use(function(req, res, next) {
 //     // res.header("Access-Control-Allow-Origin", "*");
@@ -37,7 +36,6 @@ const donorSchema = new mongoose.Schema({
 });
 
 const Donor = mongoose.model("Donor", donorSchema);
-
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
