@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyPraser = require("body-parser");
-const mailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 const https = require("https");
 const app = express();
 const cors = require('cors');
@@ -35,6 +35,15 @@ const donorSchema = new mongoose.Schema({
 });
 
 const Donor = mongoose.model("Donor", donorSchema);
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'keval.j@ahduni.edu.in',
+    pass: 'kevalj9999'
+  }
+});
+
 
 app.get("/",async function(req,res){
     // res.send("Hello");
@@ -75,8 +84,43 @@ app.post("/submit",async function(req,res){
     }
 });
 
-app.post("/email",function(req,res){
+app.post("/email", async function(req,res){
+    console.log("Entered block");
+    let transporter = await nodemailer.createTransport({
+        service: 'gmail',
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: true, // true for 465, false for other ports
+        auth: {
+            user: 'kevaljuthani99@gmail.com',
+            pass: kevalj9999, // generated ethereal password
+        },
+        headers: {
+            "x-priority": "1",
+            "x-msmail-priority": "High",
+            importance: "high"
+        }
+    });
+
     console.log(req.body);
+    var mailOptions = {
+        from: 'Keval Juthani <kevaljuthani99@gmail.com>',
+        to: 'keval.j@ahduni.edu.in',
+        subject: 'Details of Users',
+        // html: ejs.renderFile(__dirname + '/index.ejs', { data: data })
+        html: req.body
+        //     ejs: ' '
+    };
+    // 'info@redpositive.in'
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("Email Sent");
+            // res.redirect("/refresh");
+        }
+    })
 });  
 
 const PORT = 5000 || process.env.PORT;
